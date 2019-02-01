@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+import copy
 from opinel.utils.console import printError, printException, printDebug
 
 from ScoutSuite.providers.base.configs.services import BaseServicesConfig
@@ -51,3 +51,9 @@ class GCPServicesConfig(BaseServicesConfig):
         for c in vars(self):
             setattr(getattr(self, c), 'projects', projects)
 
+        projects_as_dict = {}
+        for project in projects:
+            projects_as_dict[str(project['projectNumber'])] = copy.deepcopy(project)
+
+        for c in vars(self):
+            setattr(getattr(self, c), 'projects_as_dict', projects_as_dict)

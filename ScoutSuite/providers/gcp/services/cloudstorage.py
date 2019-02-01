@@ -34,10 +34,12 @@ class CloudStorageConfig(GCPBaseConfig):
         bucket_dict['id'] = self.get_non_provider_id(bucket.id)
         bucket_dict['name'] = bucket.name
 
-        for project in self.projects:
-            if str(project['projectNumber']) == str(bucket.project_number):
-                bucket_dict['project_id'] = project['projectId']
-                break
+        # n^2 problem
+        # for project in self.projects:
+        #     if str(project['projectNumber']) == str(bucket.project_number):
+        #         bucket_dict['project_id'] = project['projectId']
+        #         break
+        bucket_dict['project_id'] = self.projects_as_dict[str(bucket.project_number)]['projectId']
 
         bucket_dict['project_number'] = bucket.project_number
         bucket_dict['creation_date'] = bucket.time_created

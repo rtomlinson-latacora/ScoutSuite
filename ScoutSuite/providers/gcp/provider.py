@@ -36,6 +36,10 @@ class GCPProvider(BaseProvider):
         self.provider_name = 'Google Cloud Platform'
 
         self.projects = []
+
+        # This is being set by services.set_projects and used in cloudstorage.py, we need a better way to represent this stuff
+        self.projects_as_dict = {}
+
         self.project_id = project_id
         self.folder_id = folder_id
         self.organization_id = organization_id
