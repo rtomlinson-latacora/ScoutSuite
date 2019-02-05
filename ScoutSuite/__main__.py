@@ -57,7 +57,6 @@ def main(passed_args=None):
                                   profile=args.profile[0],
                                   project_id=args.project_id,
                                   folder_id=args.folder_id,
-                                  service_account=args.service_account,
                                   organization_id=args.organization_id,
                                   report_dir=args.report_dir,
                                   timestamp=args.timestamp,
@@ -65,7 +64,6 @@ def main(passed_args=None):
                                   skipped_services=args.skipped_services,
                                   thread_config=args.thread_config)
 
-    # FIXME this shouldn't be done here
     if cloud_provider.provider_code == 'aws':
         if args.profile:
             report_file_name = 'aws-%s' % args.profile[0]
