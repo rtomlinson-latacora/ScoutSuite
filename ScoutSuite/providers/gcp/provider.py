@@ -87,7 +87,7 @@ class GCPProvider(BaseProvider):
                     self.aws_account_id = self.folder_id # FIXME this is for AWS
                     self.profile = self.folder_id # FIXME this is for AWS
 
-                elif self.service_account: # We know that project_id hasn't been provided and that we have a service account
+                elif service_account: # We know that project_id hasn't been provided and that we have a service account
                     self.projects = self._get_projects(parent_type='service-account',
                                                        parent_id=self.project_id)
                     self.aws_account_id = self.credentials.service_account_email # FIXME this is for AWS
